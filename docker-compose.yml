@@ -1,15 +1,5 @@
 version: '2.1'
 
-volumes:
-  files:
-    driver: local
-  mysql:
-    driver: local
-  backup:
-    driver: local
-  redis:
-    driver: local
-
 services:
   owncloud:
     image: owncloud/server:${OWNCLOUD_VERSION}
