@@ -21,6 +21,10 @@ services:
       - OWNCLOUD_MYSQL_UTF8MB4=true
       - OWNCLOUD_REDIS_ENABLED=true
       - OWNCLOUD_REDIS_HOST=redis
+      - VIRTUAL_HOST=cloud.fieldcraft.com
+      - VIRTUAL_PORT=${HTTP_PORT}
+      - LETSENCRYPT_HOST=cloud.fieldcraft.com
+      - LETSENCRYPT_EMAIL=hi@fieldcraft.grwd.uk
     healthcheck:
       test: ["CMD", "/usr/bin/healthcheck"]
       interval: 30s
