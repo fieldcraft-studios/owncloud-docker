@@ -1,5 +1,4 @@
 version: '2.1'
-
 services:
   owncloud:
     image: owncloud/server:${OWNCLOUD_VERSION}
@@ -24,7 +23,7 @@ services:
       - OWNCLOUD_REDIS_ENABLED=true
       - OWNCLOUD_REDIS_HOST=redis
       - VIRTUAL_HOST=cloud.fieldcraftstudios.com
-      - VIRTUAL_PORT=${HTTP_PORT}
+      - VIRTUAL_PORT=8080
       - LETSENCRYPT_HOST=cloud.fieldcraftstudios.com
       - LETSENCRYPT_EMAIL=hi@fieldcraft.grwd.uk
     healthcheck:
@@ -34,7 +33,6 @@ services:
       retries: 5
     volumes:
       - files:/mnt/data
-
   db:
     image: webhippie/mariadb:latest
     restart: always
@@ -53,7 +51,6 @@ services:
     volumes:
       - mysql:/var/lib/mysql
       - backup:/var/lib/backup
-
   redis:
     image: webhippie/redis:latest
     restart: always
@@ -66,7 +63,6 @@ services:
       retries: 5
     volumes:
       - redis:/var/lib/redis
-
 volumes:
   files:
     driver: local
@@ -92,7 +88,6 @@ volumes:
       type: none
       device: ${VOLUME_REDIS}
       o: bind
-
 networks:
   default:
     external:
